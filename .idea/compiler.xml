@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jarvis-microservice" />
+        <module name="GatewayServer" />
+        <module name="UserService" />
+        <module name="TestService" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="GatewayServer" target="1.8" />
+      <module name="jarvis-microservice" target="1.8" />
+      <module name="TestService" target="1.8" />
+      <module name="UserService" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="GatewayServer" options="-parameters" />
+      <module name="TestService" options="-parameters" />
+      <module name="UserService" options="-parameters" />
+      <module name="jarvis-microservice" options="-parameters" />
+    </option>
+  </component>
+</project>
