@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userservice.dto.UserDTO;
 import com.userservice.entity.Role;
 import com.userservice.entity.User;
+import com.userservice.handler.JarvisException;
 import com.userservice.model.Response;
 import com.userservice.repository.RoleRepository;
 import com.userservice.repository.UserRepository;
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response<UserDTO> getUserById(Long id) {
-        User result = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found."));
+        User result = userRepository.findById(id).orElseThrow(() -> new JarvisException("Role not found.", 404));
 
         return new Response<>(200, "Success",objectMapper.convertValue(result, UserDTO.class));
     }
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Response<UserDTO> addUser(UserDTO dto) {
         User user = objectMapper.convertValue(dto, User.class);
-        Role role = roleRepository.findById(dto.getRole().getRole_id()).orElseThrow(() -> new RuntimeException("Role not found."));
+        Role role = roleRepository.findById(dto.getRole().getRole_id()).orElseThrow(() -> new JarvisException("Role not found.", 404));
         user.setRole(role);
         return new Response<>(200, "Success", objectMapper.convertValue(userRepository.save(user), UserDTO.class));
     }
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found."));
+        userRepository.findById(id).orElseThrow(() -> new JarvisException("Role not found.", 404));
         userRepository.deleteById(id);
     }
 }
