@@ -70,6 +70,8 @@ public class NoteServiceImpl implements NoteService {
                 })
                 .collect(toList());
 
+        noteRepository.saveAll(result);
+
         return new Response<>(200, "Success", true);
     }
 
