@@ -49,7 +49,7 @@ public class UserController {
         return request.getHeader("test");
     }
 
-    @GetMapping("/freshping")
+    @GetMapping("/ping")
     public String test(){
         return "UserService working on port " + env.getProperty("local.server.port");
     }
