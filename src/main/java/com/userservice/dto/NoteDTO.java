@@ -29,5 +29,5 @@ public class NoteDTO {
     private Long updated_by;
 
     @NotNull(message = "user cannot be null.")
-    private User user;
+    private UserDTO user;
 }
