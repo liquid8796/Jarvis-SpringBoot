@@ -1,5 +1,6 @@
 package com.userservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.userservice.enums.NoteType;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,7 +44,7 @@ public class Note {
 
     private Long updated_by;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "fk_user_id")
     private User user;
 }

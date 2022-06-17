@@ -27,4 +27,5 @@ public class UserDTO {
     @NotNull(message = "role cannot be blank.")
     private RoleDTO role;
     private List<TagDTO> tags;
+    private List<NoteDTO> notes;
 }

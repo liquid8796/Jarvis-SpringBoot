@@ -1,5 +1,5 @@
 package com.userservice.enums;
 
 public enum NoteType {
-    NORMAL, MOVIE
+    NORMAL, MOVIE, JAV_CODE
 }

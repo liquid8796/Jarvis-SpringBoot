@@ -38,7 +38,7 @@ public class Tag {
 
     private Long updated_by;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "fk_user_id")
     private User user;
 }

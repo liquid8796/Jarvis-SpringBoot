@@ -29,6 +29,11 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    @PutMapping(value = "/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
+    public Response<UserDTO> updateUser(@Valid @RequestBody UserDTO user){
+        return userService.updateUser(user);
+    }
+
     @DeleteMapping("/delete/{id}")
     public Response<Boolean> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);

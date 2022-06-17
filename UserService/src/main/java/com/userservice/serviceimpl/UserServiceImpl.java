@@ -55,8 +55,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Response<UserDTO> updateUser(UserDTO user) {
-        return null;
+    public Response<UserDTO> updateUser(UserDTO dto) {
+        User user = userRepository.findById(dto.getUser_id()).orElseThrow(() -> new JarvisException("User not found.", 404));
+        user = objectMapper.convertValue(dto, User.class);
+        Role role = roleRepository.findById(dto.getRole().getRole_id()).orElseThrow(() -> new JarvisException("Role not found.", 404));
+        user.setRole(role);
+        return new Response<>(200, "Success", objectMapper.convertValue(userRepository.save(user), UserDTO.class));
     }
 
     @Override
