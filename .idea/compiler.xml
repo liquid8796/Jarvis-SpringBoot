@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="jarvis-microservice" />
         <module name="GatewayServer" />
+        <module name="DiscoveryService" />
         <module name="UserService" />
         <module name="TestService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="DiscoveryService" target="1.8" />
       <module name="GatewayServer" target="1.8" />
       <module name="jarvis-microservice" target="1.8" />
       <module name="TestService" target="1.8" />
@@ -22,6 +24,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="DiscoveryService" options="-parameters" />
       <module name="GatewayServer" options="-parameters" />
       <module name="TestService" options="-parameters" />
       <module name="UserService" options="-parameters" />

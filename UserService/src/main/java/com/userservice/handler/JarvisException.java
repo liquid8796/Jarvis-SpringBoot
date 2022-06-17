@@ -1,6 +1,9 @@
 package com.userservice.handler;
 
+
 public class JarvisException extends RuntimeException {
+
+    private static final long serialVersionUID = 8018712198999585399L;
 
     private int code;
 
