@@ -13,6 +13,8 @@ public interface NoteService {
 
     Response<NoteDTO> addNote(NoteDTO note);
 
+    Response<Boolean> addCodeJav(List<String> code, Long userId);
+
     Response<NoteDTO> updateNote(NoteDTO note);
 
     void deleteNote(Long id);

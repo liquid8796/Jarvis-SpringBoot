@@ -1,6 +1,7 @@
 package com.userservice.controller;
 
 import com.userservice.dto.NoteDTO;
+import com.userservice.dto.UserDTO;
 import com.userservice.model.Response;
 import com.userservice.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class NoteController {
     @PostMapping(value = "/create", consumes = { MediaType.APPLICATION_JSON_VALUE })
     public Response<NoteDTO> createNote(@Valid @RequestBody NoteDTO note){
         return noteService.addNote(note);
+    }
+
+    @GetMapping(value = "/addCode")
+    public Response<Boolean> addCodeJav(@RequestHeader Long userId, @RequestBody List<String> code){
+        return noteService.addCodeJav(code, userId);
     }
 
     @PutMapping(value = "/update", consumes = { MediaType.APPLICATION_JSON_VALUE })

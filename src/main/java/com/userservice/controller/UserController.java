@@ -1,7 +1,6 @@
 package com.userservice.controller;
 
 import com.userservice.dto.UserDTO;
-import com.userservice.handler.JarvisException;
 import com.userservice.model.Response;
 import com.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
