@@ -54,7 +54,25 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Response<Boolean> addCodeJav(List<String> code, Long userId) {
+    public Response<Boolean> addCodeJav(String code, Long userId) {
+
+        if(noteRepository.existsNoteByTitle(code)) return new Response<>(409, "Code existed.", false);
+
+        Note result = new Note();
+        result.setTitle(code);
+        result.setNote_type(NoteType.JAV_CODE);
+        result.setCreated_by(userId);
+        User user = new User();
+        user.setUser_id(userId);
+        result.setUser(user);
+
+        noteRepository.save(result);
+
+        return new Response<>(200, "Success", true);
+    }
+
+    @Override
+    public Response<Boolean> addBunchCodeJav(List<String> code, Long userId) {
 
         List<Note> result = code.stream()
                 .filter(s -> !noteRepository.existsNoteByTitle(s))

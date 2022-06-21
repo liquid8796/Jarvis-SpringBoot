@@ -27,8 +27,13 @@ public class NoteController {
         return noteService.addNote(note);
     }
 
+    @PostMapping(value = "/addBunchCode")
+    public Response<Boolean> addBunchCodeJav(@RequestHeader Long userId, @RequestBody List<String> code){
+        return noteService.addBunchCodeJav(code, userId);
+    }
+
     @GetMapping(value = "/addCode")
-    public Response<Boolean> addCodeJav(@RequestHeader Long userId, @RequestBody List<String> code){
+    public Response<Boolean> addCodeJav(@RequestHeader Long userId, @RequestParam String code){
         return noteService.addCodeJav(code, userId);
     }
 

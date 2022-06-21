@@ -13,7 +13,9 @@ public interface NoteService {
 
     Response<NoteDTO> addNote(NoteDTO note);
 
-    Response<Boolean> addCodeJav(List<String> code, Long userId);
+    Response<Boolean> addCodeJav(String code, Long userId);
+
+    Response<Boolean> addBunchCodeJav(List<String> code, Long userId);
 
     Response<NoteDTO> updateNote(NoteDTO note);
 
