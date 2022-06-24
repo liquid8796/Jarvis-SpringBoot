@@ -1,10 +1,10 @@
 package com.userservice.controller;
 
 import com.userservice.dto.UserDTO;
-import com.userservice.handler.JarvisException;
 import com.userservice.model.Response;
 import com.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private Environment env;
 
     @GetMapping(value = "/list", produces = { MediaType.APPLICATION_JSON_VALUE })
     public Response<List<UserDTO>> getUsers(){
@@ -45,8 +48,8 @@ public class UserController {
         return request.getHeader("test");
     }
 
-    @GetMapping("/test")
+    @GetMapping("/ping")
     public String test(){
-        throw new JarvisException("Internal error", 500);
+        return "UserService working on port " + env.getProperty("local.server.port");
     }
 }

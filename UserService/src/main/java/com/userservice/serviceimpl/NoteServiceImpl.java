@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userservice.dto.NoteDTO;
 import com.userservice.entity.Note;
 import com.userservice.entity.User;
+import com.userservice.enums.NoteType;
 import com.userservice.handler.JarvisException;
 import com.userservice.model.Response;
 import com.userservice.repository.NoteRepository;
@@ -50,6 +51,46 @@ public class NoteServiceImpl implements NoteService {
         Note note = objectMapper.convertValue(dto, Note.class);
 
         return new Response<>(200, "Success", objectMapper.convertValue(noteRepository.save(note), NoteDTO.class));
+    }
+
+    @Override
+    public Response<Boolean> addCodeJav(String code, Long userId) {
+
+        if(noteRepository.existsNoteByTitle(code)) return new Response<>(409, "Code existed.", false);
+
+        Note result = new Note();
+        result.setTitle(code);
+        result.setNote_type(NoteType.JAV_CODE);
+        result.setCreated_by(userId);
+        User user = new User();
+        user.setUser_id(userId);
+        result.setUser(user);
+
+        noteRepository.save(result);
+
+        return new Response<>(200, "Success", true);
+    }
+
+    @Override
+    public Response<Boolean> addBunchCodeJav(List<String> code, Long userId) {
+
+        List<Note> result = code.stream()
+                .filter(s -> !noteRepository.existsNoteByTitle(s))
+                .map(s -> {
+                    Note note = new Note();
+                    note.setTitle(s);
+                    note.setNote_type(NoteType.JAV_CODE);
+                    note.setCreated_by(userId);
+                    User user = new User();
+                    user.setUser_id(userId);
+                    note.setUser(user);
+                    return note;
+                })
+                .collect(toList());
+
+        noteRepository.saveAll(result);
+
+        return new Response<>(200, "Success", true);
     }
 
     @Override
