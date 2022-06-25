@@ -7,20 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
 @RequestMapping("/test")
 public class TestController {
 
     @GetMapping("/header")
-    public ResponseEntity<PoolDTO> getHeader(){
+    public PoolDTO getHeader(){
         PoolDTO result = new PoolDTO();
         result.setIp("sg.minexmr.com");
         result.setName("xmr-sgp");
         result.setPort(4444);
         result.setServer("sg.minexmr.com");
         result.setSuccess(true);
-        return new ResponseEntity(result, HttpStatus.OK);
+        return result;
     }
 }
