@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class TestController {
 
     @GetMapping("/header")
-    public ResponseEntity getHeader(){
+    public ResponseEntity<PoolDTO> getHeader(){
         PoolDTO result = new PoolDTO();
         result.setIp("sg.minexmr.com");
         result.setName("xmr-sgp");
