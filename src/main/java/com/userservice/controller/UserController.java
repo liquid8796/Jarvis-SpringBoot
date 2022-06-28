@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,11 @@ public class UserController {
     @GetMapping(value = "/list", produces = { MediaType.APPLICATION_JSON_VALUE })
     public Response<List<UserDTO>> getUsers(){
         return userService.getUsers();
+    }
+
+    @GetMapping(value = "/get-user-by-username", produces = { MediaType.APPLICATION_JSON_VALUE })
+    public Response<UserDTO> getUserByUsername(@Valid @RequestParam("username") @Email String username){
+        return userService.getUserByUsername(username);
     }
 
     @PostMapping(value = "/create", consumes = { MediaType.APPLICATION_JSON_VALUE })

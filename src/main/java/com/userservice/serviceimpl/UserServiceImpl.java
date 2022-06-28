@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+
 import static java.util.stream.Collectors.toList;
 
 @Service
@@ -40,10 +42,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Response<UserDTO> getUserByUsername(String username) {
+        User user = userRepository.findUserByEmail(username);
+        if(Objects.isNull(user)){
+            return new Response<>(200, "Invalid", null);
+        }
+
+        return new Response<>(200, "Success", objectMapper.convertValue(user, UserDTO.class));
+    }
+
+    @Override
     public Response<UserDTO> getUserById(Long id) {
         User result = userRepository.findById(id).orElseThrow(() -> new JarvisException("Role not found.", 404));
 
-        return new Response<>(200, "Success",objectMapper.convertValue(result, UserDTO.class));
+        return new Response<>(200, "Success", objectMapper.convertValue(result, UserDTO.class));
     }
 
     @Override

@@ -9,6 +9,8 @@ public interface UserService {
 
     Response<List<UserDTO>> getUsers();
 
+    Response<UserDTO> getUserByUsername(String username);
+
     Response<UserDTO> getUserById(Long id);
 
     Response<UserDTO> addUser(UserDTO user);
