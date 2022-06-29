@@ -21,7 +21,6 @@ public class User {
 
     private String username;
 
-    @JsonIgnore
     private String password;
 
     @Column(columnDefinition = "varchar(50) default ''")
