@@ -21,6 +21,8 @@ public class User {
 
     private String username;
 
+    private String password;
+
     @Column(columnDefinition = "varchar(50) default ''")
     private String full_name;
 

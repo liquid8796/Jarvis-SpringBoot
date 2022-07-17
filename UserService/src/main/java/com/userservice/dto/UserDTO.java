@@ -16,6 +16,9 @@ public class UserDTO {
     private Long user_id;
     @NotBlank(message = "username cannot be blank.")
     private String username;
+
+    private String password;
+
     @NotBlank(message = "fullname cannot be blank.")
     private String full_name;
     @NumberFormat()

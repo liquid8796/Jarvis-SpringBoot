@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.userservice.UserServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.userservice.UserServiceTest
+testGet  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.userservice.UserServiceTest.testGet(UserServiceTest.java:19)
+

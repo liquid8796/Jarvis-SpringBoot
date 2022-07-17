@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AuthorizationService/AuthorizationService.iml" filepath="$PROJECT_DIR$/AuthorizationService/AuthorizationService.iml" />
       <module fileurl="file://$PROJECT_DIR$/DiscoveryService/DiscoveryService.iml" filepath="$PROJECT_DIR$/DiscoveryService/DiscoveryService.iml" />
       <module fileurl="file://$PROJECT_DIR$/GatewayServer/GatewayServer.iml" filepath="$PROJECT_DIR$/GatewayServer/GatewayServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestService/TestService.iml" filepath="$PROJECT_DIR$/TestService/TestService.iml" />
