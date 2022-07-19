@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/backup")
+@RequestMapping("/datasource")
 public class BackupController {
 
     @Value("${spring.datasource.url}")
     private String datasource;
 
-    @GetMapping(value = "/currentversion", produces = { MediaType.APPLICATION_JSON_VALUE })
+    @GetMapping("/version")
     public String getVersionDB(){
         String result = datasource.split("//")[1].split("/")[0].split(".")[0];
         return result;
