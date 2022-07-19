@@ -16,7 +16,7 @@ public class BackupController {
 
     @GetMapping("/version")
     public String getVersionDB(){
-        String result = datasource.split("//")[1].split("/")[0].split(".")[0];
+        String result = datasource.split("//")[1].split("/")[0];
         return result;
     }
 }
