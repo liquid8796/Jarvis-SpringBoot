@@ -14,7 +14,7 @@ public class BackupController {
     @Value("${spring.datasource.url}")
     private String datasource;
 
-    @GetMapping(value = "/current-version", produces = { MediaType.APPLICATION_JSON_VALUE })
+    @GetMapping(value = "/currentversion", produces = { MediaType.APPLICATION_JSON_VALUE })
     public String getVersionDB(){
         String result = datasource.split("//")[1].split("/")[0].split(".")[0];
         return result;
